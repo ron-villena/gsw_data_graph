@@ -44,6 +44,20 @@ function App() {
     })
   }
 
+  function getWidth() {
+    const cbArr = Object.values(cbStats);
+    console.log(cbArr);
+    let count = 0;
+    cbArr.forEach(val => {
+      if (val) {
+        console.log(val);
+        count++;
+      }
+    });
+    console.log("# of True's", count);
+    return 100 / count;
+  }
+
   useEffect(doFetch, [searchYear, cbStats]);
 
   return (
@@ -101,9 +115,65 @@ function App() {
         </div>
       </nav>
       <div class='chart'>
-        <div id='divScurry' class="scurry"></div>
-        <div id='divKthomson' class="kthompson"></div>
-        <div id='divDgreen' class="dgreen"></div>
+        {
+          infoPlayers.map(infoPlayer => (
+            infoPlayer.player_id === 115 ? (
+                <div id='divScurry' class="scurry">
+                  {
+                    cbStats.points ? (
+                      <div class='chart__block chart__block--pts' style={{height: infoPlayer.pts * 9 + "px", width: getWidth() + "%"}} >Steph Curry-{infoPlayer.pts}pts/gm</div>
+                    ) : null
+                  }
+                  {
+                    cbStats.rebounds ? (
+                      <div class='chart__block chart__block--rbs' style={{height: infoPlayer.reb * 9 + "px", width: getWidth() + "%"}} >Steph Curry-{infoPlayer.reb}rbs/gm</div>
+                    ) : null
+                  }
+                  {
+                    cbStats.assists ? (
+                      <div class='chart__block chart__block--ast' style={{height: infoPlayer.ast * 9 + "px", width: getWidth() + "%"}} >Steph Curry-{infoPlayer.ast}ast/gm</div>
+                    ) : null
+                  }
+                </div> )
+            : infoPlayer.player_id === 443 ? (
+                <div id='divKthomson' class="kthompson">
+                {
+                  cbStats.points ? (
+                    <div class='chart__block chart__block--pts' style={{height: infoPlayer.pts * 9 + "px", width: getWidth() + "%"}} >Klay Thompson-{infoPlayer.pts}pts/gm</div>
+                  ) : null
+                }
+                {
+                  cbStats.rebounds ? (
+                    <div class='chart__block chart__block--rbs' style={{height: infoPlayer.reb * 9 + "px", width: getWidth() + "%"}} >Klay Thompson-{infoPlayer.reb}rbs/gm</div>
+                  ) : null
+                }
+                {
+                  cbStats.assists ? (
+                    <div class='chart__block chart__block--ast' style={{height: infoPlayer.ast * 9 + "px", width: getWidth() + "%"}} >Klay Thompson-{infoPlayer.ast}ast/gm</div>
+                  ) : null
+                }
+                </div> )
+            : (
+                <div id='divDgreen' class="dgreen">
+                {
+                  cbStats.points ? (
+                    <div class='chart__block chart__block--pts' style={{height: infoPlayer.pts * 9 + "px", width: getWidth() + "%"}} >Draymond Green-{infoPlayer.pts}pts/gm</div>
+                  ) : null
+                }
+                {
+                  cbStats.rebounds ? (
+                    <div class='chart__block chart__block--rbs' style={{height: infoPlayer.reb * 9 + "px", width: getWidth() + "%"}} >Draymond Green-{infoPlayer.reb}rbs/gm</div>
+                  ) : null
+                }
+                {
+                  cbStats.assists ? (
+                    <div class='chart__block chart__block--ast' style={{height: infoPlayer.ast * 9 + "px", width: getWidth() + "%"}} >Draymond Green-{infoPlayer.ast}ast/gm</div>
+                  ) : null
+                }
+                </div>
+            )
+          ))
+        }
       </div>
     </div>
   );
