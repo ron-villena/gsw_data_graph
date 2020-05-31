@@ -84,33 +84,39 @@ function App() {
             <option value='2019'>2019</option>
           </select>
           <div class='na__controls--stats'>
-            <label>
-              <input
-                type="checkbox"
-                checked= {cbStats.points}
-                onChange={onCheckboxChange}
-                name="points"
-              />
-              - Points
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked= {cbStats.rebounds}
-                onChange={onCheckboxChange}
-                name="rebounds"
-              />
-              - Rebounds
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked= {cbStats.assists}
-                onChange={onCheckboxChange}
-                name="assists"
-              />
-              - Assists
-            </label>
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  checked= {cbStats.points}
+                  onChange={onCheckboxChange}
+                  name="points"
+                />
+                - Points
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  checked= {cbStats.rebounds}
+                  onChange={onCheckboxChange}
+                  name="rebounds"
+                />
+                - Rebounds
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  checked= {cbStats.assists}
+                  onChange={onCheckboxChange}
+                  name="assists"
+                />
+                - Assists
+              </label>
+            </div>
           </div>
         </div>
       </nav>
